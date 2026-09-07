@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080b14">
+
+    <title>امیررضا صفر پور | کارت ویزیت دیجیتال</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --bg: #080b14;
+            --card: rgba(255,255,255,0.07);
+            --border: rgba(255,255,255,0.13);
+            --text: #ffffff;
+            --muted: #9da5b8;
+            --accent: #7c5cff;
+            --accent2: #00d4ff;
+            --success: #20e3a2;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Tahoma, Arial, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 15% 15%, rgba(124,92,255,.25), transparent 30%),
+                radial-gradient(circle at 85% 80%, rgba(0,212,255,.18), transparent 30%),
+                var(--bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            overflow-x: hidden;
+        }
+
+        /* Background glow */
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            filter: blur(90px);
+            z-index: -1;
+            animation: float 8s ease-in-out infinite alternate;
+        }
+
+        body::before {
+            background: rgba(124,92,255,.18);
+            top: -100px;
+            right: -100px;
+        }
+
+        body::after {
+            background: rgba(0,212,255,.12);
+            bottom: -100px;
+            left: -100px;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            from { transform: translate(0,0) scale(1); }
+            to { transform: translate(40px,-30px) scale(1.15); }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 430px;
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            padding: 34px 22px 24px;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            background: rgba(15,19,32,.72);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            box-shadow:
+                0 30px 80px rgba(0,0,0,.45),
+                inset 0 1px 0 rgba(255,255,255,.08);
+            animation: appear .7s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(25px) scale(.97);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Decorative circle */
+        .card::before {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            opacity: .10;
+            filter: blur(5px);
+            top: -100px;
+            left: -80px;
+        }
+
+        .profile {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .avatar {
+            width: 92px;
+            height: 92px;
+            margin: 0 auto 18px;
+            border-radius: 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 34px;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            box-shadow:
+                0 12px 35px rgba(124,92,255,.35),
+                inset 0 1px 0 rgba(255,255,255,.35);
+            transform: rotate(-3deg);
+        }
+
+        .avatar span {
+            transform: rotate(3deg);
+        }
+
+        .name {
+            font-size: 25px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -.5px;
+        }
+
+        .subtitle {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .line {
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,.14),
+                transparent
+            );
+            margin: 27px 0 18px;
+        }
+
+        .section-title {
+            color: #747d92;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-right: 4px;
+        }
+
+        .info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 18px;
+            background: rgba(255,255,255,.045);
+            transition: .25s ease;
+        }
+
+        .info:hover {
+            transform: translateY(-2px);
+            background: rgba(255,255,255,.07);
+            border-color: rgba(124,92,255,.35);
+        }
+
+        .icon {
+            width: 43px;
+            height: 43px;
+            flex-shrink: 0;
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 19px;
+            background: rgba(124,92,255,.14);
+        }
+
+        .details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .label {
+            display: block;
+            color: #7f889c;
+            font-size: 10px;
+            margin-bottom: 5px;
+        }
+
+        .value {
+            display: block;
+            direction: ltr;
+            text-align: right;
+            font-size: 14px;
+            font-weight: 600;
+            color: #f5f7ff;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            user-select: text;
+        }
+
+        .copy {
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 12px;
+            background: rgba(255,255,255,.05);
+            color: #c8cede;
+            cursor: pointer;
+            font-size: 16px;
+            transition: .2s;
+        }
+
+        .copy:hover {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .copy:active {
+            transform: scale(.93);
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .action {
+            text-decoration: none;
+            color: white;
+            border-radius: 17px;
+            padding: 15px 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: bold;
+            border: 1px solid rgba(255,255,255,.1);
+            background: rgba(255,255,255,.055);
+            transition: .25s ease;
+        }
+
+        .action:hover {
+            transform: translateY(-3px);
+            border-color: rgba(124,92,255,.45);
+            box-shadow: 0 10px 25px rgba(0,0,0,.2);
+        }
+
+        .primary {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, #7c5cff, #5740d7);
+            border: none;
+            box-shadow: 0 12px 30px rgba(124,92,255,.22);
+        }
+
+        .primary:hover {
+            box-shadow: 0 15px 35px rgba(124,92,255,.35);
+        }
+
+        .instagram:hover {
+            border-color: rgba(255,70,120,.5);
+        }
+
+        .telegram:hover {
+            border-color: rgba(0,170,255,.5);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 22px;
+            color: #565e71;
+            font-size: 9px;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translate(-50%, 100px);
+            padding: 13px 20px;
+            border-radius: 15px;
+            background: rgba(25,30,45,.95);
+            border: 1px solid rgba(255,255,255,.12);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 15px 40px rgba(0,0,0,.35);
+            font-size: 12px;
+            opacity: 0;
+            transition: .35s ease;
+            z-index: 100;
+            white-space: nowrap;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        .toast.success {
+            color: var(--success);
+        }
+
+        @media (max-width: 420px) {
+            body {
+                padding: 14px;
+            }
+
+            .card {
+                padding: 28px 16px 20px;
+                border-radius: 25px;
+            }
+
+            .name {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <main class="card">
+
+        <div class="profile">
+            <div class="avatar">
+                <span>ا</span>
+            </div>
+
+            <h1 class="name">امیررضا صفر پور</h1>
+            <p class="subtitle">Digital Business Card</p>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="section-title">اطلاعات تماس</div>
+
+        <!-- Phone -->
+        <div class="info">
+            <div class="icon">📞</div>
+
+            <div class="details">
+                <span class="label">شماره تماس</span>
+                <span class="value">09014790405</span>
+            </div>
+
+            <button class="copy"
+                    onclick="copyText('09014790405', 'شماره تماس کپی شد')">
+                ⧉
+            </button>
+        </div>
+
+        <!-- Telegram -->
+        <div class="info">
+            <div class="icon">✈️</div>
+
+            <div class="details">
+                <span class="label">شماره تلگرام</span>
+                <span class="value">09014790405</span>
+            </div>
+
+            <button class="copy"
+                    onclick="copyText('09014790405', 'شماره تلگرام کپی شد')">
+                ⧉
+            </button>
+        </div>
+
+        <!-- Instagram -->
+        <div class="info">
+            <div class="icon">◎</div>
+
+            <div class="details">
+                <span class="label">Instagram ID</span>
+                <span class="value">amir.sf246</span>
+            </div>
+
+            <button class="copy"
+                    onclick="copyText('amir.sf246', 'آیدی اینستاگرام کپی شد')">
+                ⧉
+            </button>
+        </div>
+
+        <!-- Card Number -->
+        <div class="info">
+            <div class="icon">💳</div>
+
+            <div class="details">
+                <span class="label">شماره کارت</span>
+                <span class="value">6219 8614 0788 5614</span>
+            </div>
+
+            <button class="copy"
+                    onclick="copyText('6219861407885614', 'شماره کارت کپی شد')">
+                ⧉
+            </button>
+        </div>
+
+        <div class="actions">
+
+            <a class="action primary"
+               href="tel:09014790405">
+                📞 تماس با امیررضا
+            </a>
+
+            <a class="action telegram"
+               href="https://t.me/+989014790405"
+               target="_blank">
+                ✈️ تلگرام
+            </a>
+
+            <a class="action instagram"
+               href="https://instagram.com/amir.sf246"
+               target="_blank">
+                ◎ اینستاگرام
+            </a>
+
+        </div>
+
+        <div class="footer">
+            Digital Visit Card
+        </div>
+
+    </main>
+
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+    function copyText(text, message) {
+
+        if (navigator.clipboard) {
+
+            navigator.clipboard.writeText(text)
+                .then(() => showToast(message))
+                .catch(() => fallbackCopy(text, message));
+
+        } else {
+            fallbackCopy(text, message);
+        }
+    }
+
+    function fallbackCopy(text, message) {
+
+        const input = document.createElement("textarea");
+
+        input.value = text;
+        input.style.position = "fixed";
+        input.style.opacity = "0";
+
+        document.body.appendChild(input);
+
+        input.focus();
+        input.select();
+
+        try {
+            document.execCommand("copy");
+            showToast(message);
+        } catch (err) {
+            showToast("کپی انجام نشد");
+        }
+
+        document.body.removeChild(input);
+    }
+
+    function showToast(message) {
+
+        const toast = document.getElementById("toast");
+
+        toast.textContent = "✓ " + message;
+        toast.classList.add("show", "success");
+
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2200);
+    }
+</script>
+
+</body>
+</html>
